@@ -1,0 +1,76 @@
+\documentclass[10pt,twocolumn]{article}
+
+% use the oxycomps style file
+\usepackage{oxycomps}
+
+% usage: \fixme[comments describing issue]{text to be fixed}
+% define \fixme as not doing anything special
+\newcommand{\fixme}[2][]{#2}
+% overwrite it so it shows up as red
+\renewcommand{\fixme}[2][]{\textcolor{red}{#2}}
+% overwrite it again so related text shows as footnotes
+%\renewcommand{\fixme}[2][]{\textcolor{red}{#2\footnote{#1}}}
+
+% read references.bib for the bibtex data
+\bibliography{references}
+
+% include metadata in the generated pdf file
+\pdfinfo{
+    /Title (Junior Seminar Ethics Paper)
+    /Author (Luis Martinez)
+}
+
+% set the title and author information
+\title{Junior Seminar Ethics Paper}
+\author{Luis Martinez}
+\affiliation{Occidental College}
+\email{lmartinez3@oxy.edu}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+For my project, I am planning to develop a computer application capable of converting handwritten notes, whether scanned in PDF format or otherwise, into a PDF document featuring computer-generated text while preserving the formatting of the original note. The objective of this application is to combine the convenience of digital notes with the cognitive benefits associated with handwritten notes. To accomplish this, I intend to leverage Google's Optical Character Recognition (OCR) program to extract text and subsequently develop a program that organizes this text according to the structure of the original handwritten notes.This paper will delve into the ethical considerations pertinent to the development of such a program, focusing on Accessibility and Transparency \& Explainability with a smaller focus on the potential Environmental Impacts.
+
+
+\section{Accessibility }
+\subsection{Character and Language Limitations}
+
+The primary ethical concern associated with my planned application is in regards to accessibility, particularly considering that I am not developing every aspect from scratch and rely on existing technology. The main accessibility concern revolves around the capability of Google's OCR to effectively handle a variety of characters, both Latin and non-Latin. Google's OCR currently supports languages encompassing a wide range of characters, from Latin-based languages like English to Eastern European languages such as Czech, as well as languages from Southeast Asia including Chinese and Indian languages like Hindi\cite{languagesupport}. Furthermore, it includes Experimental Languages that are still undergoing development but are not yet regularly evaluated. Notably, certain languages like Swahili remain categorized under Experimental Languages despite having a substantial global speaker base exceeding 200 million individuals\cite{swahili}.
+
+Furthermore, several written languages of Indigenous Peoples in the Americas, such as Nahuatl and Cree, are mapped to Latin letters but are not formally recognized by the program, allowing them to be deciphered but not acknowledged as originating from their respective languages. Similarly, languages like Inuktitut, "an Indigenous language in North America, spoken in the Canadian Arctic,"\cite{inuit} are entirely absent from the available language options. It is worth acknowledging that while many of these languages categorized as mapped or experimental may be less widespread globally, this does not absolve the program from the reality that these language gaps significantly limit the accessibility and potential reach of my project.
+
+\subsection{Handwriting}
+
+When considering accessibility, particularly with regard to various handwriting styles such as cursive, it is important to address certain limitations inherent in Google's OCR technology. According to the online documentation, Google's OCR is primarily designed for printed or typed text, with handwritten text considered a secondary aspect. The documentation explicitly states that "the response is optimized for dense text and documents. The JSON includes page, block, paragraph, word, and break information."\cite{handwritingOCR} Personal experimentation with Google Lens, which utilizes the same OCR technology, reveals that it can accurately and consistently recognize subjectively "good" print handwriting. However, it exhibits reduced accuracy and consistency when confronted with subjectively "bad" handwriting. I have also noticed that Google's OCR performs notably less accurately with cursive handwriting, especially when the script is hastily written, such as during note-taking in a classroom setting. Moreover, it fails to recognize certain alternative symbols commonly used in handwriting but not included in standard keyboards, such as the alternative form of the ampersand (\&) as illustrated in Figure 1. These issues significantly impede the accessibility of Google's OCR and, consequently, impact the accessibility of my project. While potential workarounds may exist for the recognition of alternative symbols, they do not guarantee comprehensive accessibility given the continued prevalence of handwriting, particularly cursive, in everyday use. 
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.05\textwidth]{Epsilon_Ampersand.png}
+    \caption{Figure 1: Example of an alternate drawing of an ampersand\cite{altAmpersand}}
+    \label{fig:image_label}
+\end{figure}
+
+\subsection{Financial}
+An additional ethical consideration regarding accessibility pertains to the potential financial implications of the program. Given my intention to utilize Google OCR, I will likely need to obtain a subscription to Google Cloud services which will incur a monthly fee based on usage. Initially, this cost may be manageable albeit inconvenient since a significant portion of my time will be dedicated to testing the application using a consistent set of examples. However, if this project progresses and transitions into a viable product, the expenses associated with Google Cloud will steadily increase . Practically speaking, this would require incorporating some form of payment or subscription fees for using the application, which raises ethical concerns as it creates a disparity wherein individuals with greater financial resources have access to the tool while those with limited budgets may face barriers. This issue is exacerbated by the fact that my target audience primarily comprises students who often rely on their parents' income for necessary resources. One potential approach to mitigate this concern could involve offering a free version of the project supported by advertisements. Nonetheless, this approach still results in a differentiated user experience, with monetarily disadvantaged individuals accessing a lower-quality version of the application.
+
+\subsection{Computer Application}
+Furthermore, an additional accessibility concern arises from the nature of my project as a computer program. The decision to focus on a computer application stems primarily from my personal preference for desktop and laptop computers. However, another factor influencing this choice is the additional difficulties in programming for smartphone applications, especially due to the requirement of using specific app stores. This perception suggests that creating a robust and user-friendly smartphone app may pose significant technical challenges. The ethical implications of this decision are multifaceted. On one hand, there is a broader demographic reach with smartphone accessibility, especially outside the United States where smartphones are more prevalent than computers. However, this accessibility advantage is tempered by the reality that not everyone has equal access to smartphones, particularly individuals from economically disadvantaged backgrounds. This dichotomy presents a dilemma in terms of maximizing the potential user base while ensuring equitable access to the program, particularly for students who may rely on communal or public computer resources rather than personal devices. The challenge lies in striking a balance between technological accessibility and inclusivity, ensuring that the application remains accessible across a diverse range of devices and socioeconomic contexts.
+
+\section{Transparency and Explainabilty}
+\subsection{Dataset}
+When planning to start any Machine Learning-related project, one of the first questions you should consider revolves around the dataset: "What will be the dataset?" or "Where will we obtain the data from?" In the context of Google's OCR, pertinent information concerning their dataset is not readily accessible; in my search, I encountered a lack of transparent documentation regarding their data acquisition practices. This absence of transparency raises significant ethical questions: How was the data gathered? Is the data potentially biased, or worse, acquired through unethical means? The absence of clear explanations or access to the dataset poses challenges in validating the integrity and fairness of the models built upon it.. Specifically concerning my project, this lack of transparency may hinder my ability to fix weird or potentially offensive results, since I will be unable to directly rectify issues or trace their origins. For example, the OCR system might misinterpret handwritten characters, especially in languages or scripts with limited training data, resulting in inaccurate conversions or misrepresentations of the original content. Without comprehensive insights into the OCR's decision-making processes, rectifying or preventing such issues becomes challenging, potentially impeding the application's accuracy, reliability, and ethical soundness.
+
+\subsection{Privacy and Data Security}
+Another important ethical consideration for my project involves privacy and data security. As my project will deal with converting handwritten notes into digital text, there is the inherent risk that it will process sensitive, either personal or otherwise confidential,  information that users may not want to expose. For this reason my project must maintain transparency in as many aspects as possible to cross ethical, and potentially legal, boundaries. However, my proposed use of Google's OCR does complicate this ethical consideration as the actual software that is "reading" the information belongs to a much larger and far more opaque company. I will likely be able to still uphold ethical standards on the project that I am creating from scratch, but I will be unable to fully address the privacy concerns unless I create my own OCR program which would add an additional layer of difficulty to my project while resulting in a worse result. 
+
+\section{Environmental Impacts}
+The final, yet equally crucial, ethical consideration pertains to the potential environmental impacts associated with developing a program reliant on machine learning. In the creation of a machine learning program, it is important to acknowledge that, "Despite their operation in a virtual space, AI and the cloud have considerable tangible effects. They will intensify greenhouse gas emissions, consume increasing amounts of energy, and require larger quantities of natural resources. This emerges, in one form, through rising energy demands."\cite{AIclimate} In the context of my project, which heavily relies on both AI technology and cloud-based services, direct mitigation of these issues is challenging. However, I am committed to minimizing my project's environmental footprint by optimizing power usage during its development and implementation phase.
+
+\section{Conclusion}
+While creating a  computer application aimed at converting handwritten notes into digital text while preserving the original formatting I have to consider several critical ethical considerations. Accessibility emerges as a central concern, particularly concerning the limitations and biases inherent in existing OCR technology, specifically Google's OCR software. The disparities in language recognition, especially for indigenous languages and non-Latin scripts, highlight the need for inclusive technological solutions. Moreover, the financial implications of utilizing third-party services like Google Cloud raise questions about equitable access to the final application, especially for economically disadvantaged users. Additionally, the decision to focus on a computer application over a smartphone app underscores the challenge of balancing technological accessibility with inclusivity across diverse socioeconomic backgrounds. Transparency regarding data acquisition practices and data security remains paramount and emphasizes the need for ethical considerations throughout the development and deployment phases.  Finally, as with all novel technology it is important to consider the environmental impacts as well as the ways in which those impacts can be minimized.While these ethical challenges present complexities and trade-offs, addressing them conscientiously is essential to ensure the integrity, fairness, and accessibility of my proposed application in serving its intended purpose effectively.
+
+\printbibliography
+
+\end{document}
